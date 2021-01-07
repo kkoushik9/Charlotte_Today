@@ -1,0 +1,114 @@
+use charlotte_today;
+db.createCollection('connections');
+
+db.connections.insert(
+[{connectionID:"event01" , 
+connectionName:"ICE SKATING AT THE WHITEWATER CENTER" ,
+category:"Current Event", 
+host:"U.S. National White Water Center",
+details:"Skate on an ice trail or free skate on 17,000 sq. ft of ice. Located in the Upper Pond of the Whitewater Center, the skating environment features three distinct programming areas and an on-ice Airstream serving hot and cold beverages." ,
+place:"U.S. National White Water Center" ,
+dateTime:"NOV 19 - FEB 15", 
+eventImage:"/assets/images/ice.jpg",
+userID:"kkoushik9"
+},
+{connectionID:"event02" , 
+connectionName:"QUEEN CITY BREWERS FESTIVAL" ,
+category:"Current Event", 
+host:"Queen city brewers club",
+details:"Queen City Brewers Festival shines the spotlight on locally produced craft beer and cider with invites exclusive to Charlotte-area breweries, brewpubs, cideries along with hand-picked restaurants, snack exhibitors and sponsors. Festival proceeds benefit ACEing Autism-Charlotte providing the resources needed to serve families affected by autism from Mooresville to Rock Hill, East Charlotte to Gastonia through specialized tennis programs. Guest admission provides craft beer, cider, coffee, Kombucha and food sampling along with interactive exhibitors and a ‘Best of Show’ presentation to conclude the evening session." ,
+place:"The Park Expo and Conference center" ,
+dateTime:"JAN 19 - FEB 15",
+eventImage:"/assets/images/brew.jpg",
+userID:"kkoushik9"
+},
+{connectionID:"event03" , 
+connectionName:"QUEEN'S FEAST- CHARLOTTE RESTAURANT WEEK" ,
+category:"Current Event", 
+host:"Restaraunt association of charlotte",
+details:"Queen\'s Feast: Charlotte Restaurant Week with 3 courses at $30 or $35 at over 140 metro Charlotte NC\'s best restaurants" ,
+place:"City Wide" ,
+dateTime:"JAN 19 - JAN 30",
+eventImage:"/assets/images/feast.jpg",
+userID:"kkoushik9"
+},
+{connectionID:"upEvent01" , 
+connectionName:"LUCINDA WILLIAMS 20TH ANNIVERSARY TOUR" ,
+category:"Upcoming events", 
+host:"Annual corporation",
+details:"Giving voice to all her experience, Williams ends Good Souls, Better Angels with the luminous Good Souls, one of the last songs written for the album. It is a deeply moving invocation Keep me with all of those/who help me find strength/when I’m feeling hopeless/who guide me along/And help me stay strong and fearless." ,
+place:"McGlohon Theatre at Spirit Square" ,
+dateTime:"JAN 30",
+eventImage:"/assets/images/concert.jpg",
+userID:"kkoushik10"
+},
+{connectionID:"upEvent02" , 
+connectionName:"CIAA MEN'S AND WOMEN'S BASKETBALL TOURNAMENT" ,
+category:"Upcoming events", 
+host:"CIAA corporation pvt. ltd.",
+details:"The CIAA tournament is the quintessential cultural experience offering official events appealing to a diverse demographic of alumni and fans, to include educational programming, community engagement, Fan Fest, Super Saturday, step-shows, concerts, and most importantly, 22 action-packed basketball games. It’s also one of few basketball tournaments in the nation that features men and women competitions in the same facility, during the same week." ,
+place:"Spectrum center" ,
+dateTime:"FEB 25 - FEB 29",
+eventImage:"/assets/images/basketball.jpg",
+userID:"kkoushik10"
+},
+{connectionID:"upEvent03" , 
+connectionName:"MEXICO NATIONAL TEAM 2020 U.S. TOUR" ,
+category:"Upcoming events", 
+host:"Annual corporation",
+details:"Over the past 16 years, Soccer United Marketing (SUM), the commercial arm of Major League Soccer, has become the preeminent commercial soccer enterprise in North America, overseeing the commercialization, marketing, promotion and operational execution of the region’s most successful soccer entities. Currently, SUM holds the exclusive rights to Major League Soccer, the United States Soccer Federation, the Mexican National Team (for the United States market), and Concacaf Properties (Gold Cup™ and Concacaf Champions League). In addition, SUM held the promotional and commercial rights to the highly successful 2016 Copa America Centenario." ,
+place:"Bank Of America Stadium" ,
+dateTime:"MAR 26",
+eventImage:"/assets/images/team.jpg",
+userID:"kkoushik10"
+}]
+);
+
+
+db.createCollection('users');
+db.users.insert({
+	userID : "kkoushik9",
+  	firstName : "Venkata sai koushik",
+ 	lastName : "Koritala",
+ 	email : "kkoushik9@gmail.com",
+  	address : "university city blvd.",
+  	password :  { salt:"e650d5d611c71106",
+        passwordHash:"a508f9df290755c35969394025285a664de3d6e5ca387046767a35a4553647465785e383d5b24e9255dea0e0bfc3eaaa8c43f75000aa760a77468f5df8363406"}
+});
+db.users.insert({
+	userID : "kkoushik10",
+  	firstName : "sai kumar",
+ 	lastName : "erpina",
+ 	email : "serpina@uncc.edu",
+  	address : "university city blvd.",
+  	password : { salt:"65703eedcf4b2d89",
+        passwordHash:"35cf02e8737614c1b9afda71bdca3303cf25503ec71068560cbe45ff16653dc2852c9718c35d52ba6acf562fa32b87c125dd5a1230be53c177f421dccf520585"}
+});
+
+
+db.createCollection('userprofiles');
+
+
+
+db.userprofiles.insertMany([{userID:'kkoushik9',userConnections: [{connectionID:"event01" , 
+connectionName:"ICE SKATING AT THE WHITEWATER CENTER" ,
+category:"Current Event", rsvp:'YES'},{connectionID:"event02" , 
+connectionName:"QUEEN CITY BREWERS FESTIVAL" ,
+category:"Current Event", rsvp:'MAYBE'}]},
+{userID:'kkoushik10',userConnections: [{connectionID:"event03" , 
+connectionName:"QUEEN'S FEAST- CHARLOTTE RESTAURANT WEEK" ,
+category:"Current Event",  rsvp:'YES'},{connectionID:"upEvent01" , 
+connectionName:"LUCINDA WILLIAMS 20TH ANNIVERSARY TOUR" ,
+category:"Upcoming events",  rsvp:'NO'}]},
+{userID:'kkoushik11',userConnections: [{connectionID:"upEvent02" , 
+connectionName:"CIAA MEN'S AND WOMEN'S BASKETBALL TOURNAMENT" ,
+category:"Upcoming events", rsvp:'MAYBE'},{connectionID:"upEvent03" , 
+connectionName:"MEXICO NATIONAL TEAM 2020 U.S. TOUR" ,
+category:"Upcoming events",  rsvp:'YES'}]}]);
+
+
+
+
+
+
+

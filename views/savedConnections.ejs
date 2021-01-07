@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+<title>My Events</title>
+<link rel="stylesheet" type="text/css" href="/assets/stylesheets/style.css">
+</head>
+<body>
+  <%- include ('partials/header.ejs') -%>
+  <%- include ('partials/nav.ejs') -%>
+
+   <% if(userConnections.length>0){ %>
+    <form action="">
+    <table  class="lasttable">
+      <tr>
+      <th class="lasttableelement">EVENT</th>
+      <th class="lasttableelement">CATEGORY</th>
+      <th class="lasttableelement">GOING?</th>
+      <th></th>
+      <th></th>
+      </tr>
+      <% userConnections.forEach(function(item){ %>
+        <tr>
+      <td class="lasttableelement"><%= item.connectionName %></td>
+      <td class="lasttableelement"><%= item.category %></td>
+      <td class="lasttableelement"><%= item.rsvp %></td>
+      <td >
+    <button formmethod="post" formaction="/connection?id=<%= item.connectionID %>">UPDATE</button></td>
+      <td >
+    <button formmethod="post" formaction="/savedConnections?id=<%=item.connectionID%>&action=delete">DELETE</button></td>
+    </tr>
+
+    <% }); %>
+    </table>
+  </form>
+   <% }else{ %>
+<div>
+  <h2>No connections to show. Please add atleast one connection in connections page</h2>
+</div>
+   <% } %>
+<br><br><br>
+<%- include ('partials/footer.ejs') -%>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+<title>Events</title>
+<link rel="stylesheet" type="text/css" href="/assets/stylesheets/style.css">
+</head>
+<body>
+  <%- include ('partials/header.ejs') -%>
+ 	<%- include ('partials/nav.ejs') -%>
+
+  <% myCategories.forEach(function(category){ %>
+<h2 class="mainwelcome"><%= category %></h2>
+
+
+<table class="eventtable">
+  <% myConnections.forEach(function(item){ %>
+  		      	<% if(item.category == category){ %>
+    <tr>
+
+    <td><a href="/connection?id=<%= item.connectionID %>"><img src=<%= item.eventImage %> width=240 alt="ice"></a></td>
+    <td><h3><a class="noLine" href="/connection?id=<%= item.connectionID %>"> <%= item.connectionName %> </a></h3>
+    <p><%= item.place %></p>
+  <p><%= item.dateTime %></td>
+
+  </tr>
+  <% } %>
+	   	<% }); %>
+  </table>
+  <% }); %>
+  <br><br><br>
+  <%- include ('partials/footer.ejs') -%>
+</body>
+</html>

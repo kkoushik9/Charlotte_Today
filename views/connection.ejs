@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+<title>Selected Event</title>
+<link rel="stylesheet" type="text/css" href="/assets/stylesheets/style.css">
+</head>
+<body>
+  <%- include ('partials/header.ejs') -%>
+ 	<%- include ('partials/nav.ejs') -%>
+
+<table class="connectiontable" >
+<tr>
+<td><img src= <%= connectionDetails.eventImage %> width=350 alt="ballgame"> </td>
+<td><table>
+  <tr><td><h3>NAME:</h3></td><td> <%= connectionDetails.connectionName %></td></tr>
+  <tr><td><h3>HOST:</h3></td><td> <%= connectionDetails.host %></td></tr>
+  <tr><td><h3>DATE & TIME:</h3></td><td> <%= connectionDetails.dateTime %></td></tr>
+  <tr><td><h3>VENUE:</h3> </td><td><%= connectionDetails.place %></td></tr>
+  </table></td>
+    <td> Are you going? 43 people are interested
+      <form class="" action="<% if(session!=undefined){ %>
+        savedConnections?id=<%=connectionDetails.connectionID%>&action=save
+    <% } else { %>
+     login
+   <% } %>" method="<% if(session!=undefined){ %>post<% } else{ %>get<% } %>">
+        <table><tr><td>
+
+
+<button   name="rsvp" class="buttonyes" value="YES">YES</button></td>
+          <td>
+<button   name="rsvp" class="buttonno" value="NO">NO</button></td>
+          <td>
+<button   name="rsvp" class="buttonmaybe" value="MAY BE">MAY BE</button>
+
+</td></tr></table>
+</form>
+    </td>
+</tr>
+</table>
+<h2 class="mainsubhead">ABOUT</h2>
+  <p class="eventabout"><%= connectionDetails.details %></p>
+
+<br><br><br>
+<%- include ('partials/footer.ejs') -%>
+</body>
+</html>

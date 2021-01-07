@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>new connections</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="/assets/stylesheets/style.css">
+	</head>
+	<body>
+		<%- include ('partials/header.ejs') -%>
+	 	<%- include ('partials/nav.ejs') -%>
+		<main>
+      <div >
+        <form method="post" action="/newConnection">
+          <table >
+              <tr>
+                <td><label for="connectionName"> Name </label></td>
+                <td><input name="connectionName" id="connectionName" type="text" placeholder="Name"></td>
+								<% if (locals.errors) { %><% Object.values(errors).forEach(function(error){ %><% if (error.param === 'connectionName') { %>
+        <td><label class="errorMsg"><%= error.msg %></label></td><br><% } }); %> <% } %>
+              </tr>
+              <tr>
+                <td><label for="category"> category </label></td>
+								<table><tr>
+                <td><input name="category"  type="radio" placeholder="Host" value="Current Event" id="currentEvent"></td>
+								<td><label for = "currentEvent"> Current Event </label></td></tr>
+								<tr>
+                <td><input name="category" type="radio" placeholder="Host" value="Upcoming events" id="upEvent"></td>
+								<td><label for = "upEvent"> Upcoming Event </label>	</td>
+
+					</tr></table>
+              </tr>
+							<% if (locals.errors) { %><% Object.values(errors).forEach(function(error){ %><% if (error.param === 'category') { %>
+			<tr><td><br><label class="errorMsg"><%= error.msg %></label><br></td></tr><% } }); %> <% } %>
+              <tr>
+                <td><label for="details"> About </label></td>
+                <td><textarea name="details" rows="10" cols="100" placeholder="Details"></textarea></td>
+								<% if (locals.errors) { %><% Object.values(errors).forEach(function(error){ %><% if (error.param === 'details') { %>
+        <td><label class="errorMsg"><%= error.msg %></label></td><br><% } }); %> <% } %>
+              </tr>
+              <tr>
+                <td><label for="place"> Venue </label></td>
+                <td><input name="place" type="text" placeholder="Venue"></td>
+								<% if (locals.errors) { %><% Object.values(errors).forEach(function(error){ %><% if (error.param === 'place') { %>
+        <td><label class="errorMsg"><%= error.msg %></label></td><br><% } }); %> <% } %>
+              </tr>
+							<tr>
+                <td><label for="dateTime"> Date and Time </label></td>
+                <td><input name="dateTime" type="text" placeholder="Date and Time"></td>
+								<% if (locals.errors) { %><% Object.values(errors).forEach(function(error){ %><% if (error.param === 'dateTime') { %>
+        <td><label class="errorMsg"><%= error.msg %></label></td><br><% } }); %> <% } %>
+              </tr>
+
+              <tr>
+                <td colspan="2">
+                  <input class="buttonyes" name="SubmitButton" type="submit" value="Submit">
+                </td>
+              </tr>
+          </table>
+        </form>
+  	</div>
+	</main>
+	<br><br><br>
+	<%- include ('partials/footer.ejs') -%>
+	</body>
+</html>
